@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Set TimeZone to Asia/Ho_Chi_Minh
-echo "===== [TASK] Set TimeZone to Asia/Ho_Chi_Minh"
+echo ">>>>> [TASK] Set TimeZone to Asia/Ho_Chi_Minh"
 timedatectl set-timezone Asia/Ho_Chi_Minh
 
 ## Update the system >/dev/null 2>&1
@@ -33,7 +33,7 @@ setenforce 0
 sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
 
 ## Update hosts file
-echo "[TASK] Update host file /etc/hosts"
+echo ">>>>> [TASK] Update host file /etc/hosts"
 cat >>/etc/hosts<<EOF
 192.168.16.151 docker1.testlab.local docker1
 192.168.16.141 jenkins1.testlab.local jenkins1
