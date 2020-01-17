@@ -45,7 +45,7 @@ EOF
 ## Install Jenkins & Git on CentOS 7
 echo ">>>>> [TASK] Install Jenkins & Git on CentOS 7"
 yum install -y git >/dev/null 2>&1
-yum -y install java-1.8.0-openjdk >/dev/null 2>&1
+yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel >/dev/null 2>&1
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo >/dev/null 2>&1
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum -y install jenkins >/dev/null 2>&1
