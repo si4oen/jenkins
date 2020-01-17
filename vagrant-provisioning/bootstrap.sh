@@ -45,7 +45,7 @@ EOF
 ## Install Jenkins on CentOS 7
 echo ">>>>> [TASK] Install Jenkins on CentOS 7"
 yum -y install java-1.8.0-openjdk >/dev/null 2>&1
-curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo >/dev/null 2>&1
 rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 yum -y install jenkins >/dev/null 2>&1
 systemctl daemon-reload
