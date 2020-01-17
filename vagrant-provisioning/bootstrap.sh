@@ -42,8 +42,9 @@ cat >>/etc/hosts<<EOF
 192.168.16.132 kworker2.testlab.local kworker2
 EOF
 
-## Install Jenkins on CentOS 7
-echo ">>>>> [TASK] Install Jenkins on CentOS 7"
+## Install Jenkins & Git on CentOS 7
+echo ">>>>> [TASK] Install Jenkins & Git on CentOS 7"
+yum install -y git >/dev/null 2>&1
 yum -y install java-1.8.0-openjdk >/dev/null 2>&1
 curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo >/dev/null 2>&1
 rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
