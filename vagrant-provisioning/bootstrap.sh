@@ -29,7 +29,7 @@ systemctl stop firewalld
 
 ## Disable SELinux
 echo ">>>>> [TASK] Disable SELinux"
-setenforce 0
+setenforce 0 >/dev/null 2>&1
 sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
 
 ## Update hosts file
