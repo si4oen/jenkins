@@ -43,9 +43,8 @@ cat >>/etc/hosts<<EOF
 192.168.16.132 kworker2.testlab.local kworker2
 EOF
 
-## Install Jenkins & Git on CentOS 7
+## Install Jenkins on CentOS 7
 echo ">>>>> [TASK] Install Jenkins & Git on CentOS 7"
-yum install -y git >/dev/null 2>&1
 yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel >/dev/null 2>&1
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo >/dev/null 2>&1
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
@@ -54,6 +53,12 @@ systemctl daemon-reload
 systemctl start jenkins
 systemctl enable jenkins >/dev/null 2>&1
 
+## Install Python3.x & pip3 & git
+echo ">>>>> [TASk] Install Python3.x & pip & git"
+yum install -y git >/dev/null 2>&1
+yum install -y centos-release-scl >/dev/null 2>&1
+yum install -y rh-python36 >/dev/null 2>&1
+yum install -y python3-pip >/dev/null 2>&1
 
 ## Cleanup system >/dev/null 2>&1
 echo ">>>>> [TASK] Cleanup system"
@@ -65,3 +70,9 @@ rm -f /var/log/wtmp /var/log/btmp
 #dd if=/dev/zero of=/EMPTY bs=1M
 #rm -f /EMPTY
 cat /dev/null > ~/.bash_history && history -c
+
+## Rebooting Server
+echo ">>>>> [TASK] Rebooting server"
+echo ""
+echo "########## Finished ##########"
+sudo reboot now
