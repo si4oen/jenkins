@@ -35,6 +35,7 @@ sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig
 ## Update hosts file
 echo ">>>>> [TASK] Update host file /etc/hosts"
 cat >>/etc/hosts<<EOF
+192.168.16.161 gitlab1.testlab.local gitlab1
 192.168.16.151 docker1.testlab.local docker1
 192.168.16.141 jenkins1.testlab.local jenkins1
 192.168.16.130 kmaster.testlab.local kmaster
@@ -56,9 +57,9 @@ systemctl enable jenkins >/dev/null 2>&1
 
 ## Cleanup system >/dev/null 2>&1
 echo ">>>>> [TASK] Cleanup system"
-package-cleanup -y --oldkernels --count=1
-yum -y autoremove
-yum clean all
+package-cleanup -y --oldkernels --count=1 >/dev/null 2>&1
+yum -y autoremove >/dev/null 2>&1
+yum clean all >/dev/null 2>&1
 rm -rf /tmp/*
 rm -f /var/log/wtmp /var/log/btmp
 #dd if=/dev/zero of=/EMPTY bs=1M
